@@ -22,6 +22,7 @@
         <activity android:name=".controller.AddLecturerActivity"   android:label="Add Lecturer"/>
         <activity android:name=".controller.AddCourseActivity"     android:label="Add Course"/>
         <activity android:name=".controller.StudentListActivity"     android:label="Student List"/>
+        <activity android:name=".controller.CourseListActivity"     android:label="Course List"/>
     </application>
 
 </manifest>
