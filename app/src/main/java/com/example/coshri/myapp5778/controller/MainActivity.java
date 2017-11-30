@@ -43,6 +43,8 @@ public class MainActivity extends Activity  implements View.OnClickListener {
     }
 
     private void addStudent() {
+        Intent intent = new Intent(this,AddStudentActivity.class);
+        startActivity(intent);
     }
 private void addLecturer() {
     Intent intent = new Intent(this,AddLecturerActivity.class);

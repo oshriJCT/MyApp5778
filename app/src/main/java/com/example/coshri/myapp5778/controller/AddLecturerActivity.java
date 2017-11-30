@@ -49,7 +49,7 @@ public class AddLecturerActivity extends Activity implements View.OnClickListene
         }
     }
 
-private void addLecturer() {
+    private void addLecturer() {
         final ContentValues contentValues = new ContentValues();
         try {
             int id = Integer.valueOf(this.IdEditText.getText().toString());
@@ -62,26 +62,23 @@ private void addLecturer() {
             contentValues.put(AcademyConst.LecturerConst.SENIORITY, Seniority);
 
 
+            new AsyncTask<Void, Void, Long>() {
+                @Override
+                protected void onPostExecute(Long idResult) {
+                    super.onPostExecute(idResult);
+                    if (idResult > 0)
+                        Toast.makeText(getBaseContext(), "insert id: " + idResult, Toast.LENGTH_LONG).show();
+                }
 
-
-new AsyncTask<Void, Void, Long>() {
-    @Override
-    protected void onPostExecute(Long idResult) {
-        super.onPostExecute(idResult);
-        if (idResult > 0)
-            Toast.makeText(getBaseContext(), "insert id: " + idResult, Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    protected Long doInBackground(Void... params) {
-        return DBManagerFactory.getManager().addLecturer(contentValues);
-    }
-}.execute();
-
-
+                @Override
+                protected Long doInBackground(Void... params) {
+                    return DBManagerFactory.getManager().addLecturer(contentValues);
+                }
+            }.execute();
 
 
         } catch (Exception e) {
+            Toast.makeText(getBaseContext(), "Error ", Toast.LENGTH_LONG).show();
         }
     }
 }
